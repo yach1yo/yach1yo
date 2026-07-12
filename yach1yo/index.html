@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yach1yo · 个人主页</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- ========== 左侧个人信息区 (1/4) ========== -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <!-- 头像区域 -->
+        <div class="avatar-section">
+          <div class="avatar-wrapper" id="avatarWrapper">
+            <img id="avatarImg" src="assets/avatar-placeholder.svg" alt="头像" class="avatar-img">
+            <div class="avatar-overlay">
+              <i class="fa-solid fa-camera"></i>
+              <span>更换头像</span>
+            </div>
+            <input type="file" id="avatarUpload" accept="image/*" hidden>
+          </div>
+          <h1 class="profile-name" contenteditable="true" id="profileName">Yach1yo</h1>
+          <p class="profile-tagline" contenteditable="true" id="profileTagline">探索技术的边界</p>
+        </div>
+
+        <!-- 分割线 -->
+        <div class="divider"></div>
+
+        <!-- 个人简介 -->
+        <div class="bio-section">
+          <h3 class="section-label">
+            <i class="fa-solid fa-user"></i> 关于我
+          </h3>
+          <div class="bio-content" contenteditable="true" id="bioContent">
+            这里写一段简短的自我介绍，介绍你的研究方向、兴趣爱好和技术栈。
+          </div>
+        </div>
+
+        <!-- 技能标签 -->
+        <div class="skills-section">
+          <h3 class="section-label">
+            <i class="fa-solid fa-code"></i> 技术栈
+          </h3>
+          <div class="skills-tags" id="skillsTags">
+            <span class="skill-tag" contenteditable="true">Python</span>
+            <span class="skill-tag" contenteditable="true">JavaScript</span>
+            <span class="skill-tag" contenteditable="true">AI/ML</span>
+            <span class="skill-tag" contenteditable="true">NLP</span>
+            <span class="skill-tag add-skill-btn" id="addSkillBtn">+</span>
+          </div>
+        </div>
+
+        <!-- 分割线 -->
+        <div class="divider"></div>
+
+        <!-- 社交媒体链接 -->
+        <div class="social-section">
+          <h3 class="section-label">
+            <i class="fa-solid fa-link"></i> 社交链接
+          </h3>
+          <div class="social-links" id="socialLinks">
+            <a href="https://github.com/yach1yo" target="_blank" class="social-link">
+              <i class="fa-brands fa-github"></i>
+              <span>GitHub</span>
+            </a>
+            <div class="social-link add-social" id="addSocialBtn">
+              <i class="fa-solid fa-plus"></i>
+              <span>添加链接</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 底部信息 -->
+        <div class="sidebar-footer">
+          <p class="footer-text">© 2026 Yach1yo</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ========== 右侧内容区 (3/4) ========== -->
+    <main class="main-content">
+      <!-- 顶部导航提示 -->
+      <div class="content-header">
+        <div class="header-indicator">
+          <span class="dot"></span>
+          <span class="header-text">随时编辑 · 数据自动保存至浏览器</span>
+        </div>
+        <button class="btn-export" id="btnExport" title="导出数据备份">
+          <i class="fa-solid fa-download"></i> 导出备份
+        </button>
+      </div>
+
+      <!-- ===== 研究项目 栏目 ===== -->
+      <section class="content-section">
+        <div class="section-header">
+          <div class="section-title-row">
+            <span class="section-icon">📚</span>
+            <h2 class="section-title">研究项目</h2>
+            <span class="section-badge" id="researchCount">0 个项目</span>
+          </div>
+          <button class="btn-add" id="btnAddResearch">
+            <i class="fa-solid fa-plus"></i> 新增项目
+          </button>
+        </div>
+        <div class="section-description">
+          记录你的学术研究、论文进展和实验成果。
+        </div>
+        <div class="cards-grid" id="researchGrid">
+          <!-- 动态生成项目卡片 -->
+        </div>
+        <div class="empty-state" id="researchEmpty">
+          <i class="fa-solid fa-flask"></i>
+          <p>还没有研究项目，点击"新增项目"开始记录吧</p>
+        </div>
+      </section>
+
+      <!-- ===== vibe coding试作品 栏目 ===== -->
+      <section class="content-section">
+        <div class="section-header">
+          <div class="section-title-row">
+            <span class="section-icon">⚡</span>
+            <h2 class="section-title">Vibe Coding 试作品</h2>
+            <span class="section-badge" id="vibeCount">0 个作品</span>
+          </div>
+          <button class="btn-add btn-add-accent" id="btnAddVibe">
+            <i class="fa-solid fa-plus"></i> 新增作品
+          </button>
+        </div>
+        <div class="section-description">
+          展示你的创意编程作品、Demo 和快速原型。
+        </div>
+        <div class="cards-grid" id="vibeGrid">
+          <!-- 动态生成作品卡片 -->
+        </div>
+        <div class="empty-state" id="vibeEmpty">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <p>还没有试作品，点击"新增作品"展示你的创意</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 模态框：新增/编辑卡片 -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">新增项目</h3>
+        <button class="modal-close" id="modalClose">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>标题</label>
+          <input type="text" id="modalItemTitle" placeholder="输入标题...">
+        </div>
+        <div class="form-group">
+          <label>描述</label>
+          <textarea id="modalItemDesc" rows="4" placeholder="输入描述内容..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>标签（用逗号分隔）</label>
+          <input type="text" id="modalItemTags" placeholder="例如：NLP, Python, LLM">
+        </div>
+        <div class="form-group">
+          <label>链接</label>
+          <input type="url" id="modalItemLink" placeholder="https://...">
+        </div>
+        <div class="form-group">
+          <label>附件</label>
+          <div class="file-upload-area" id="modalFileArea">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <p>点击或拖拽文件到此处上传</p>
+            <input type="file" id="modalFileInput" multiple hidden>
+          </div>
+          <div class="file-list" id="modalFileList"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" id="modalCancel">取消</button>
+        <button class="btn-save" id="modalSave">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 社交链接编辑模态框 -->
+  <div class="modal-overlay" id="socialModalOverlay">
+    <div class="modal modal-sm" id="socialModal">
+      <div class="modal-header">
+        <h3>添加社交链接</h3>
+        <button class="modal-close" id="socialModalClose">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>平台名称</label>
+          <input type="text" id="socialName" placeholder="例如：Twitter、Blog...">
+        </div>
+        <div class="form-group">
+          <label>链接地址</label>
+          <input type="url" id="socialUrl" placeholder="https://...">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" id="socialModalCancel">取消</button>
+        <button class="btn-save" id="socialModalSave">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast 通知 -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
